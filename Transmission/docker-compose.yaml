@@ -1,0 +1,15 @@
+version: "2"
+services:
+        transmission:
+                image: jaymoulin/transmission
+                command: transmission-daemon -f -g /config
+                volumes:
+                        - /home/pi/RepoRASPI/Transmission/config:/config
+                        - /home/pi/downloads:/downloads
+                ports:
+                        - 9091:9091
+                        - 51413:51413
+                        - 51413:51413/udp
+                expose:
+                        - 9091
+                restart: unless-stopped
